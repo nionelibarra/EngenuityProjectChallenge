@@ -10,28 +10,41 @@ import {
   MDBCardBody,
 }
   from 'mdb-react-ui-kit';
-import {auth} from "../firebase";
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "../firebase";
+import { useUserAuth } from '../context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 
 export function SignIn() {
 
   //declared variables to store the email and password user inputs on form
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const { signIn } = useUserAuth();
+  const [error, setError] = useState()
+  const navigate = useNavigate();
 
 
   //Submit Handler function that runs upon pressing the 'Log In' button\
-const signInHandler = (e) =>
-{
-  e.preventDefault();
-  signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
-console.log(userCredential) //DELETE this later. this is onyl for testing
-  }).catch((error)=>
-  {
-    console.log(error)
-  })
-}
+  const signInHandler = async (e) => {
+    e.preventDefault();
+    setError("")
+    try {
+      //DELETE THESE CONSOLE LOGS ONLY FOR TESTING
+      console.log("email: " + email)
+      console.log("pass: " + password)
+      await signIn(email, password);
+      console.log("Succesfully logged in!")
+      navigate("/") //must navigate to home page
+
+    }
+    catch (err) {
+      setError(err.message);
+    }
+
+
+  }
 
   return (
 
@@ -43,21 +56,23 @@ console.log(userCredential) //DELETE this later. this is onyl for testing
           <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '500px' }} >
             <MDBCardBody className='p-5 w-100 d-flex flex-column'>
               <form id="signInForm" onSubmit={signInHandler}>
-              <h2 className="text-uppercase text-center mb-5">SIGN IN</h2>
-              <p className="text-white-50 mb-3">Please enter your login and password!</p>
+                <h2 className="text-uppercase text-center mb-5">SIGN IN</h2>
+                {error && <Alert variant="danger">{error}</Alert>}
+                <p className="text-white-50 mb-3">Please enter your login and password</p>
 
-              <MDBInput wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='email' size="lg" value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <MDBInput wrapperClass='mb-4 w-100' label='Password' id='formControlLg' type='password' size="lg" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <MDBInput wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='email' size="lg"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <MDBInput wrapperClass='mb-4 w-100' label='Password' id='formControlLg' type='password' size="lg" onChange={(e) => setPassword(e.target.value)} />
 
-              {/* <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' /> */}
+                {/* <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' /> */}
               </form>
               <MDBBtn size='lg' type="submit" form='signInForm'>
                 Login
               </MDBBtn>
 
               <hr className="my-4" />
+              <div className=" text-center"> Don't have an account yet? <Link to="/signup"> Sign Up</Link></div>
 
             </MDBCardBody>
           </MDBCard>
@@ -67,5 +82,5 @@ console.log(userCredential) //DELETE this later. this is onyl for testing
 
     </MDBContainer>
   );
-  
+
 }

@@ -10,7 +10,7 @@ const firebaseConfig = {
     storageBucket: "recipe-web-app-55874.appspot.com",
     messagingSenderId: "698119975415",
     appId: "1:698119975415:web:aa8c9f47818772baf67ef2"
-};
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
