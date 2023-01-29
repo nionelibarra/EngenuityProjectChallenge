@@ -13,14 +13,7 @@ const RecipesList = ({ id }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // **********************FOR TESTING ONLY DELETE LATER*************************
-  const getRecipeIdHandler = (id) => {
-    setRecipeId(id);
-    //DELETE CONSOLE LOG LATER FOR TESTING ONLY!
-    console.log("Raw RECIPE ID: ", id)
-  }
-  // ***********************************************
-
+  //Declared variables for storing input data from forms
   const [recipeName, setRecipeName] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -39,7 +32,6 @@ const RecipesList = ({ id }) => {
       recipeName,
       ingredients,
       instructions,
-
     };
 
     //DELETE CONSOLE LOG FOR TESTING ONLY!
@@ -60,7 +52,14 @@ const RecipesList = ({ id }) => {
     setInstructions("");
     setIngredients("");
   };
-  
+
+
+  //HANDLER TO GET RECIPE ID
+  const getRecipeIdHandler = (id) => {
+    setRecipeId(id);
+    handleShow();
+  }
+
   //HANDLER FOR OBTAINING THE RECIPES FROM THE DATABASE
   const getRecipes = async () => {
     const data = await RecipeDataService.getAllRecipes();
@@ -80,27 +79,18 @@ const RecipesList = ({ id }) => {
   //EDIT HANDLER WHEN WERE EDITING AND UPDATING A RECIPE
   const editHandler = async () => {
     setMessage("");
-    //DELETE CONSOLE LOG LATER FOR TESTING  ONLY!
-    console.log("ACCESSED EDIT HANDLER")
     try {
-      handleShow();//DISPLAY MODAL FIRST
       const docSnap = await RecipeDataService.getRecipe(recipeId);
-      //DELETE CONSOLE LOG LATER FOR TESTING  ONLY!
-      console.log("the record is :", docSnap.data());
       setRecipeName(docSnap.data().recipeName);
       setIngredients(docSnap.data().ingredients);
       setInstructions(docSnap.data().instructions);
     } catch (err) {
       setMessage({ error: true, msg: err.message });
-      //DELETE CONSOLE LOG LATER FOR TESTING  ONLY!
-    console.log("PROBLEM")
     }
   };
 
   //GET RECIPES WHENEVER THE ID CHANGES
   useEffect(() => {
-    //REMOVE CONSOLE LOG LATER
-    console.log("The id here is : ", recipeId);
     if (recipeId !== undefined && recipeId !== "") {
       editHandler();
     }
