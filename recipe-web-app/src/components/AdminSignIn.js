@@ -13,6 +13,8 @@ import {
 import { useUserAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
+import logo from "../images/logo_coloredbg.png"
+import "./AdminSignIn.css"
 
 
 export const AdminSignIn = () => {
@@ -55,6 +57,7 @@ export const AdminSignIn = () => {
           <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '500px' }} >
             <MDBCardBody className='p-5 w-100 d-flex flex-column'>
               <form id="signInForm" onSubmit={signInHandler}>
+              <img src={logo} width="90rem" height="90rem" class="center" />
                 <h2 className="text-uppercase text-center mb-5">ADMINISTRATOR</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <p className="text-white-50 mb-3">Please enter your login and password</p>

@@ -14,6 +14,8 @@ import { auth } from "../firebase";
 import { useUserAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
+import logo from "../images/logo_coloredbg.png"
+import './SignIn.css'
 
 
 export function SignIn() {
@@ -36,7 +38,7 @@ export function SignIn() {
       console.log("pass: " + password)
       await signIn(email, password);
       console.log("Succesfully logged in!")
-      navigate("/home") //must navigate to home page
+      navigate("/dashboard") //must navigate to home page
 
     }
     catch (err) {
@@ -55,7 +57,9 @@ export function SignIn() {
 
           <MDBCard className='bg-white my-5 mx-auto' style={{ borderRadius: '1rem', maxWidth: '500px' }} >
             <MDBCardBody className='p-5 w-100 d-flex flex-column'>
+
               <form id="signInForm" onSubmit={signInHandler}>
+                <img src={logo} width="90rem" height="90rem" class="center" />
                 <h2 className="text-uppercase text-center mb-5">SIGN IN</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <p className="text-white-50 mb-3">Please enter your login and password</p>

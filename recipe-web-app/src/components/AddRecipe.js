@@ -26,16 +26,11 @@ const AddRecipe = ({ id, setRecipeId }) => {
 
         //DELETE CONSOLE LOG FOR TESTING ONLY!
         console.log(newRecipe);
-
         try {
-            if (id !== undefined && id !== "") {
-                await RecipeDataService.updateRecipe(id, newRecipe);
-                setRecipeId("");
-                setMessage({ error: false, msg: "Updated successfully!" });
-            } else {
-                await RecipeDataService.addRecipes(newRecipe);
-                setMessage({ error: false, msg: "New Recipe added successfully!" });
-            }
+
+            await RecipeDataService.addRecipes(newRecipe);
+            setMessage({ error: false, msg: "New Recipe added successfully!" });
+
         } catch (err) {
             setMessage({ error: true, msg: err.message });
         }
@@ -46,25 +41,7 @@ const AddRecipe = ({ id, setRecipeId }) => {
         setIngredients("");
     };
 
-    const editHandler = async () => {
-        setMessage("");
-        try {
-            const docSnap = await RecipeDataService.getRecipe(id);
-            console.log("the record is :", docSnap.data());
-            setRecipeName(docSnap.data().recipeName);
-            setIngredients(docSnap.data().ingredients);
-            setInstructions(docSnap.data().instructions);
-        } catch (err) {
-            setMessage({ error: true, msg: err.message });
-        }
-    };
 
-    useEffect(() => {
-        console.log("The id here is : ", id);
-        if (id !== undefined && id !== "") {
-            editHandler();
-        }
-    }, [id]);
     return (
         <>
             <div className="p-4 box">
@@ -123,7 +100,7 @@ const AddRecipe = ({ id, setRecipeId }) => {
                     </Form.Group>
                     <div className="d-grid gap-2">
                         <Button variant="primary" type="Submit">
-                            Add/Update
+                            Add Recipe
                         </Button>
                     </div>
                 </Form>

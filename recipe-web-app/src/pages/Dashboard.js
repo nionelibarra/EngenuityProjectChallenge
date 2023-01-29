@@ -5,7 +5,8 @@ import { Container, Row } from 'react-bootstrap'
 import RecipesList from '../components/RecipeList'
 import './Dashboard.css'
 
-export const Home = () => {
+
+export const Dashboard = () => {
 
     const [recipeId,setRecipeId] = useState("");
 

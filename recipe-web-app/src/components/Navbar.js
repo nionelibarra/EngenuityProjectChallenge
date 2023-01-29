@@ -7,6 +7,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { MDBIcon } from 'mdbreact';
+import logo from "../images/logo_transparent.png"
 
 const NavigationBar = () => {
   const { logOut, user } = useUserAuth();
@@ -20,6 +21,7 @@ const NavigationBar = () => {
       console.log(error.message);
     }
   };
+  
   return (
     <>
       {/* <div className="p-4 box mt-3 text-center">
@@ -34,19 +36,20 @@ const NavigationBar = () => {
 
       <Navbar bg="primary" variant="dark" fixed="top" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <img
               alt=""
-              src="./images/logo.png"
-              // width="40"
-              // height="40"
-              className="d-inline-block align-top"
+              src={logo}
+              height="40px"
+              width="40px"
             />{' '}
             Recipeeez
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
             <MDBIcon icon='user-alt' />
               <Navbar.Text className="">
                 <a>{user.email}</a>

@@ -31,7 +31,7 @@ class RecipeDataService
     getRecipe = (id) => 
     {
         const recipeDoc = doc(db,"recipes",id);
-        return getDocs(recipeDoc)
+        return getDoc(recipeDoc)
     }
 }
 
