@@ -36,7 +36,7 @@ export function SignIn() {
       console.log("pass: " + password)
       await signIn(email, password);
       console.log("Succesfully logged in!")
-      navigate("/dashboard") //must navigate to home page
+      navigate("/home") //must navigate to home page
 
     }
     catch (err) {
