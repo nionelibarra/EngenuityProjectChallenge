@@ -47,7 +47,7 @@ const RecipesList = ({ id }) => {
 
     try {
       if (recipeId !== undefined && recipeId !== "") {
-        await RecipeDataService.updateRecipe(id, newRecipe);
+        await RecipeDataService.updateRecipe(recipeId, newRecipe);
         setRecipeId("");
         setMessage({ error: false, msg: "Updated successfully!" });
       }
@@ -175,7 +175,7 @@ const RecipesList = ({ id }) => {
             )}
 
             {/* INPUT FOR RECIPE NAME */}
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} id="recipe-form">
               <Form.Group className="mb-3" controlId="formRecipeName">
                 <InputGroup>
                   <InputGroup.Text id="formRecipeName">A</InputGroup.Text>
@@ -217,11 +217,11 @@ const RecipesList = ({ id }) => {
                   />
                 </InputGroup>
               </Form.Group>
-              <div className="d-grid gap-2">
+              {/* <div className="d-grid gap-2">
                         <Button variant="primary" type="Submit">
                             Update Recipe
                         </Button>
-                    </div>
+                    </div> */}
             </Form>
           </div>
         </></Modal.Body>
@@ -229,7 +229,7 @@ const RecipesList = ({ id }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="success" onClick={handleClose} type="Submit">
+          <Button variant="success" type="Submit" form="recipe-form">
             Save Changes
           </Button>
         </Modal.Footer>
