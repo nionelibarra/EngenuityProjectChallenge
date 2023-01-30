@@ -7,6 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { UserAuthContextProvider } from './context/AuthContext'
 import { Dashboard } from './pages/Dashboard'
 import { Home } from './pages/Home'
+import DisplayRecipes from './components/DisplayRecipes'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/admin" element={<AdminSignIn />} />
+          <Route path="/recipes" element={<DisplayRecipes />} />
         </Routes>
       </UserAuthContextProvider>
     </>
