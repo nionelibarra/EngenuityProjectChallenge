@@ -32,13 +32,13 @@ export function SignIn() {
   const signInHandler = async (e) => {
     e.preventDefault();
     setError("")
-    try {
-      //DELETE THESE CONSOLE LOGS ONLY FOR TESTING
+    try {   
+      //DELETE LATER
       console.log("email: " + email)
       console.log("pass: " + password)
       await signIn(email, password);
       console.log("Succesfully logged in!")
-      navigate("/dashboard",{replace:true}) //must navigate to home page
+      navigate("/dashboard",{replace:true}) //must navigate to home page and prevent back button to go back to login page
 
     }
     catch (err) {

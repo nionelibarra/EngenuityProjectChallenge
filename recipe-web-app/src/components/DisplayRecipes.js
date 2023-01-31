@@ -8,15 +8,10 @@ import './DisplayRecipes.css'
 const DisplayRecipes = () => {
     const [recipeId, setRecipeId] = useState("");
     const [recipes, setRecipes] = useState([])
-
-    const [reducerValue, setReducerValue] = useReducer(x => x + 1, 0)
     const [showModal, setShowModal] = useState(false)
-
     const [recipeName, setRecipeName] = useState("");
     const [ingredients, setIngredients] = useState("");
     const [instructions, setInstructions] = useState("");
-    const [userId, setUserId] = useState("");
-    const [message, setMessage] = useState({ error: false, msg: "" });
 
     //Handler for obtaining recipe data from database
     useEffect(() => {
@@ -26,7 +21,7 @@ const DisplayRecipes = () => {
             setRecipes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
         fetchRecipes()
-    }, [reducerValue])
+    }, [])
 
     //HANDLER TO GET RECIPE ID
     const getRecipeIdHandler = (id) => {
@@ -36,14 +31,13 @@ const DisplayRecipes = () => {
 
     //HANDLER TO GET DATA TO DISPLAY IN CARD MODAL WHEN WE CLICK ON VIEWING RECIPE 
     const getRecipeDetailHandler = async () => {
-        setMessage("");
         try {
             const docSnap = await RecipeDataService.getRecipe(recipeId);
             setRecipeName(docSnap.data().recipeName);
             setIngredients(docSnap.data().ingredients);
             setInstructions(docSnap.data().instructions);
         } catch (err) {
-            setMessage({ error: true, msg: err.message });
+            console.log("LOADING ERROR:",err);
         }
     };
 
@@ -72,6 +66,7 @@ const DisplayRecipes = () => {
                     <Card.Text>{recipeData.instructions}</Card.Text> */}
                     </Card.Body>
                 </Card>
+
                 <Modal
                     size="lg"
                     show={showModal}

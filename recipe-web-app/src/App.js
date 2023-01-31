@@ -14,7 +14,6 @@ function App() {
     <>
       <UserAuthContextProvider>
         <Routes>
-          {/* Temporary Until theres a landing page */}
           <Route path="/" element={<SignIn />} />
           <Route path="/home" element={<Home />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
