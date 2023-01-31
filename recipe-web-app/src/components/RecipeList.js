@@ -2,7 +2,7 @@ import React, { useEffect, useState, useReducer } from "react";
 import { Table, Button, Modal, Form, Alert, InputGroup, ButtonGroup } from "react-bootstrap";
 import RecipeDataService from "../services/recipes.services";
 import { useUserAuth } from "../context/AuthContext";
-
+import './RecipeList.css'
 
 //*************************************************** VARIABLES FOR DISPLAY RECIPE LIST COMPONENT******************************** */
 const RecipesList = ({ id }) => {
