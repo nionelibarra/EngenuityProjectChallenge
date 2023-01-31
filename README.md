@@ -15,7 +15,7 @@ These are the following software needed to run this project on your PC.
 
 ### Installing
 
-* **git pull** or download the source code through github.
+* **git clone** the repository or download the source code folder through github.
 * Any modifications needed to be made to files/folders
 
 ### Running Source Code
@@ -24,11 +24,11 @@ These are the following software needed to run this project on your PC.
 
 > recipe-web-abb/
 
-* install all the dependencies of the project using **npm**
+* install all the dependencies of the project using the node package manager (**npm**)
 ```
 npm install
 ```
-* Run the project using the **npm**
+* Run the project using **npm**
 ```
 npm start
 ```
@@ -37,7 +37,7 @@ npm start
 
 ## Authors
 
-Contributors names and contact info
+Authors name and contact info
 
  - Nionel Ibarra (nionelibarra@gmail.com)
 
