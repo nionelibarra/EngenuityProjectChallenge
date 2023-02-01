@@ -5,7 +5,7 @@ import { useUserAuth } from "../context/AuthContext";
 import './RecipeList.css'
 
 //*************************************************** VARIABLES FOR DISPLAY RECIPE LIST COMPONENT******************************** */
-const RecipesList = ({ id }) => {
+const AdminRecipesList = ({ id }) => {
   //Declared Variables to store Recipe ID numbers
   const [recipeId, setRecipeId] = useState("");
   const [recipes, setRecipes] = useState([]);
@@ -181,7 +181,7 @@ const RecipesList = ({ id }) => {
   useEffect((e) => {
     setUserId(user.uid)
     //DELETE LATER
-    console.log("uid saved: ", userId)
+    console.log("UID SAVED IN ADMIN RECIPE COMPONENT: ", userId)
   })
 
   //*****************************************HANDLER FUNCTIONS FOR RECIPE ADD END****************************************** */
@@ -191,7 +191,7 @@ const RecipesList = ({ id }) => {
   return (
     <>
 
-      <h1 class="main-header">Manage Recipes</h1>
+      <h1 class="main-header">Admin - Manage All Recipes</h1>
 
       {message?.msg && (
         <Alert
@@ -428,4 +428,4 @@ const RecipesList = ({ id }) => {
   );
 };
 
-export default RecipesList;
+export default AdminRecipesList;

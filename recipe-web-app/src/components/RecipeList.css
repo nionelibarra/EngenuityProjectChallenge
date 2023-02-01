@@ -20,3 +20,10 @@
 {
     margin: 10px
 }
+
+.secondary-header
+{
+  margin: 10px;
+  font-size: 1.2rem;
+  color: grey;
+}

@@ -14,9 +14,6 @@ const NavigationBar = () => {
   const navigate = useNavigate();
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
 
-
-
- 
   const handleLogout = async () => {
     try {
       await logOut();
@@ -27,24 +24,6 @@ const NavigationBar = () => {
     }
   };
 
-  // const authButton = () =>
-  // {
-
-  //   console.log("user details: ",user)
-  //   if( signInFlag=== null || signInFlag === "")
-  //   {
-  //     return (
-  //       <Button variant="outline-light" size="sm" as={Link} to="/signin">
-  //       Log in
-  //     </Button>
-  //     )
-  //   }
-  //   else{
-  //     <Button variant="outline-light" size="sm" onClick={handleLogout}>
-  //               Log out
-  //             </Button>
-  //   }
-  // }
   
   return (
     <>
@@ -73,9 +52,6 @@ const NavigationBar = () => {
               <Button variant="outline-light" size="sm" onClick={handleLogout}>
                 Log out
               </Button>
-              {/* <Form>
-                {authButton()}
-              </Form> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

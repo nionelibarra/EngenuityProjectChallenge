@@ -192,14 +192,68 @@ const RecipesList = ({ id }) => {
     console.log("uid saved in RecipeList: ", userId)
   })
 
-  //*****************************************HANDLER FUNCTIONS FOR RECIPE ADD END****************************************** */
+//*****************************************HANDLER FUNCTIONS FOR RECIPE ADD END****************************************** */
+  
+//*****************************************HANDLER FOR RENDERING RECIPES FOR USER START****************************************** */
+  const RenderUserRecipes= () =>
+  {
+    const filteredRecipes= recipes.filter(recipe =>
+      {
+        return recipe.userId === user.uid
+      })
 
+      return( <Table striped bordered hover size="x-lg">
+       
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Recipe</th>
+          <th>Ingredients</th>
+          <th>Instructions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredRecipes.map((doc, index) => {
+          return (
+            <tr key={doc.id}>
+              <td>{index + 1}</td>
+              <td>{doc.recipeName}</td>
+              <td>{doc.ingredients}</td>
+              <td>{doc.instructions}</td>
+              <td>
+                <Button
+                  variant="secondary"
+                  className="edit-button"
+                  onClick={(e) => getRecipeIdHandler(doc.id)}
 
-  //RENDER COMPONENTS
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant="danger"
+                  className="delete-button"
+                  onClick={() => deleteRecipeHandler(doc.id)}
+                >
+                  Delete
+                </Button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </Table>)
+      
+  }
+  
+//*****************************************HANDLER FOR RENDERING RECIPES FOR USER END****************************************** */
+
+  
+//*****************************************RENDER MAIN COMPONENTS START****************************************** */
   return (
     <>
 
-      <h1 class="main-header">Manage Recipes</h1>
+      <h1 class="main-header">Manage My Recipes</h1>
+      <h2 class="secondary-header">email: {user.email}</h2>
 
       {message?.msg && (
         <Alert
@@ -212,45 +266,8 @@ const RecipesList = ({ id }) => {
         </Alert>
       )}
       <Button className="add-recipe-button" onClick={() => openAddRecipe()}>Add Recipe</Button>
-      <Table striped bordered hover size="x-lg">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Recipe</th>
-            <th>Ingredients</th>
-            <th>Instructions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {recipes.map((doc, index) => {
-            return (
-              <tr key={doc.id}>
-                <td>{index + 1}</td>
-                <td>{doc.recipeName}</td>
-                <td>{doc.ingredients}</td>
-                <td>{doc.instructions}</td>
-                <td>
-                  <Button
-                    variant="secondary"
-                    className="edit-button"
-                    onClick={(e) => getRecipeIdHandler(doc.id)}
-
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    variant="danger"
-                    className="delete-button"
-                    onClick={() => deleteRecipeHandler(doc.id)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
+      <RenderUserRecipes/>
+     
 
       {/* ***********************************************************MODAL EDIT  COMPONENT START********************************************************* */}
 
@@ -436,6 +453,9 @@ const RecipesList = ({ id }) => {
       </Modal>
     </>
   );
+  //*****************************************RENDER MAIN COMPONENTS END****************************************** */
 };
+
+
 
 export default RecipesList;

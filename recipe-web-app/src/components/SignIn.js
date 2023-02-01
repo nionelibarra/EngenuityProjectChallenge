@@ -16,12 +16,13 @@ import {Alert} from 'react-bootstrap';
 import logo from "../images/logo_coloredbg.png"
 import './SignIn.css'
 
-
-export function SignIn() { // declared variables to store the email and password user inputs on form
+// VARIABLES TO STORE EMAIL AND PASSWORD INPUTS BY USER
+export function SignIn() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {signIn} = useUserAuth();
     const [error, setError] = useState()
+    const {user} = useUserAuth();
     const navigate = useNavigate();
 
 
@@ -31,22 +32,13 @@ export function SignIn() { // declared variables to store the email and password
         setError("")
         try {
             await signIn(email, password)
-            .then((result) => {
-                console.log("Succesfully logged IN!")
-                navigate("/dashboard", {replace: true}) // must navigate to home page and prevent back button to go back to login page
-            })
-            .catch((error)=>
-            {
-              setError(error.message)
-            })
 
-            
+            console.log("Succesfully logged in USER!")
+            navigate("/dashboard", {replace: true}) // must navigate to home page and prevent back button to go back to login page
 
-        } catch (err) {
-            setError(err.message);
+        } catch (error) {
+            setError(error)
         }
-
-
     }
 
     return (
@@ -95,6 +87,11 @@ export function SignIn() { // declared variables to store the email and password
                                 Don't have an account yet?
                                 <Link to="/signup">
                                     Sign Up</Link>
+                            </div>
+                            <hr className="my-4"/>
+                            <div className=" text-center">
+                                <Link to="/admin">
+                                    Administrator Login</Link>
                             </div>
 
                         </MDBCardBody>
