@@ -4,7 +4,7 @@ A  Basic Recipe Web Application. This is my Project Challenge submission for Eng
 ## Description
 
 
-This is a web application that allows for users to sign up, log in, view, edit, add, and delete their own recipes. The admin page can be found in the **/admin** directory.
+This is a web application that allows for users to sign up, log in, view, edit, add, and delete their own recipes. The admin login page can be found in the **/admin** directory.Admin credentials email:admin@admin.com pass:hello123
 
 ## Getting Started
 
@@ -15,7 +15,7 @@ These are the following software needed to run this project on your PC.
 
 ### Installing
 
-* **git pull** or download the source code through github.
+* **git clone** the repository or download the source code folder through github.
 * Any modifications needed to be made to files/folders
 
 ### Running Source Code
@@ -24,11 +24,11 @@ These are the following software needed to run this project on your PC.
 
 > recipe-web-abb/
 
-* install all the dependencies of the project using **npm**
+* install all the dependencies of the project using the node package manager (**npm**)
 ```
 npm install
 ```
-* Run the project using the **npm**
+* Run the project using **npm**
 ```
 npm start
 ```
@@ -37,7 +37,7 @@ npm start
 
 ## Authors
 
-Contributors names and contact info
+Authors name and contact info
 
  - Nionel Ibarra (nionelibarra@gmail.com)
 
