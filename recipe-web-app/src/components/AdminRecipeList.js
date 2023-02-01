@@ -114,6 +114,16 @@ const AdminRecipesList = ({ id }) => {
 
   };
 
+   //HANDLER FOR CLEARING THE FIELD IN EDIT UPON CLOSING
+ const closeEditHandler = () =>
+ {
+  setRecipeName("");
+    setInstructions("");
+    setIngredients("");
+    forceUpdate();
+    closeEditRecipe();
+ }
+
 
 
   //EDIT HANDLER WHEN WERE EDITING AND UPDATING A RECIPE
@@ -246,7 +256,7 @@ const AdminRecipesList = ({ id }) => {
 
       {/* ***********************************************************MODAL EDIT  COMPONENT********************************************************* */}
 
-      <Modal show={showEditRecipe} onHide={closeEditRecipe}>
+      <Modal show={showEditRecipe} onHide={closeEditHandler}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Recipe</Modal.Title>
         </Modal.Header>
@@ -314,7 +324,7 @@ const AdminRecipesList = ({ id }) => {
           </div>
         </></Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeEditRecipe}>
+          <Button variant="secondary" onClick={closeEditHandler}>
             Close
           </Button>
           <Button variant="success" type="Submit" form="recipe-form">
