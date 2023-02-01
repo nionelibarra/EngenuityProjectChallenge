@@ -42,65 +42,69 @@ export function SignIn() {
     }
 
     return (
+        <body>
+        <div className="main-body-userlogin">
+            <MDBContainer fluid>
 
-        <MDBContainer fluid>
+                <MDBRow className='d-flex justify-content-center align-items-center h-100'>
+                    <MDBCol col='12'>
 
-            <MDBRow className='d-flex justify-content-center align-items-center h-100'>
-                <MDBCol col='12'>
-
-                    <MDBCard className='bg-white my-5 mx-auto'
-                        style={
-                            {
-                                borderRadius: '1rem',
-                                maxWidth: '500px'
-                            }
-                    }>
-                        <MDBCardBody className='p-5 w-100 d-flex flex-column'>
-
-                            <form id="signInForm"
-                                onSubmit={signInHandler}>
-                                <img src={logo}
-                                    width="90rem"
-                                    height="90rem"
-                                    class="center"/>
-                                <h2 className="text-uppercase text-center mb-5">SIGN IN</h2>
+                        <MDBCard className='bg-white my-5 mx-auto'
+                            style={
                                 {
-                                error && <Alert variant="danger">
-                                    {error}</Alert>
-                            }
-                                <p className="text-white-50 mb-3">Please enter your login and password</p>
+                                    borderRadius: '1rem',
+                                    maxWidth: '500px'
+                                }
+                        }>
+                            <MDBCardBody className='p-5 w-100 d-flex flex-column'>
 
-                                <MDBInput wrapperClass='mb-4 w-100' placeholder='juan@sample.com' label='Email address' id='formControlLg' type='email' size="lg"
-                                    onChange={
-                                        (e) => setEmail(e.target.value)
-                                    }/>
-                                <MDBInput wrapperClass='mb-4 w-100' placeholder='Password' label='Password' id='formControlLg' type='password' size="lg"
-                                    onChange={
-                                        (e) => setPassword(e.target.value)
-                                    }/> {/* <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' /> */} </form>
-                            <MDBBtn size='lg' type="submit" form='signInForm'>
-                                Login
-                            </MDBBtn>
+                                <form id="signInForm"
+                                    onSubmit={signInHandler}>
+                                    <img src={logo}
+                                        width="90rem"
+                                        height="90rem"
+                                        class="center"/>
+                                    <h2 className="text-uppercase text-center mb-5">SIGN IN</h2>
+                                    {
+                                    error && <Alert variant="danger">
+                                        {error}</Alert>
+                                }
+                                    <p className="text-white-50 mb-3">Please enter your login and password</p>
 
-                            <hr className="my-4"/>
-                            <div className=" text-center">
-                                Don't have an account yet?
-                                <Link to="/signup">
-                                    Sign Up</Link>
-                            </div>
-                            <hr className="my-4"/>
-                            <div className=" text-center">
-                                <Link to="/admin">
-                                    Administrator Login</Link>
-                            </div>
+                                    <MDBInput wrapperClass='mb-4 w-100' placeholder='juan@sample.com' label='Email address' id='formControlLg' type='email' size="lg"
+                                        onChange={
+                                            (e) => setEmail(e.target.value)
+                                        }/>
+                                    <MDBInput wrapperClass='mb-4 w-100' placeholder='Password' label='Password' id='formControlLg' type='password' size="lg"
+                                        onChange={
+                                            (e) => setPassword(e.target.value)
+                                        }/> {/* <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' /> */} </form>
+                                <MDBBtn size='lg' type="submit" form='signInForm'>
+                                    Login
+                                </MDBBtn>
 
-                        </MDBCardBody>
-                    </MDBCard>
+                                <hr className="my-4"/>
+                                <div className=" text-center">
+                                    Don't have an account yet?
+                                    <Link to="/signup">
+                                        Sign Up</Link>
+                                </div>
+                                <hr className="my-4"/>
+                                <div className=" text-center">
+                                    <Link to="/admin">
+                                        Administrator Login</Link>
+                                </div>
 
-                </MDBCol>
-            </MDBRow>
+                            </MDBCardBody>
+                        </MDBCard>
 
-        </MDBContainer>
+                    </MDBCol>
+                </MDBRow>
+
+            </MDBContainer>
+        </div>
+        </body>
+
     );
 
 }
