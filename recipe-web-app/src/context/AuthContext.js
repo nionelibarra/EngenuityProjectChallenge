@@ -1,5 +1,5 @@
-//Auth Context allows 1 user login data to be distributed 
-//throughout the whole app until user logs out
+//Auth Context runs as a service "API" for the application to process functions
+//for users to login, logout, sign in, and sign up throughout the whole application
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
@@ -26,19 +26,18 @@ export function UserAuthContextProvider({ children }) {
         return signOut(auth)
     }
 
+  
     useEffect((e) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser)
             {
                 setUser(currentUser);
-                //DELETE LATER
-                console.log("User details is: ",currentUser);
-                console.log("User ID in Auth Context is: ",currentUser.uid);
-                setUserUid(currentUser.uid)
-                console.log("value savedin userUid variable in auth context: ", userUid)
+                setUserUid(currentUser.uid);
+
+                console.log("UID saved in Authcontext: ",userUid)
+                
             }
             else{
-                //DELETE LATER
                 console.log("No User Available")
             }
             

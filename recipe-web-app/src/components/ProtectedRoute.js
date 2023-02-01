@@ -1,4 +1,5 @@
-//Function allows authenticated users to access certain components e.g Dashboard
+// Function allows authenticated users that have sucessfully logged in to access certain components
+// throughout the application
 
 import React from "react";
 import { Navigate } from "react-router-dom";

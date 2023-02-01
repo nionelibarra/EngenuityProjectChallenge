@@ -4,20 +4,23 @@ import { Modal, Card, Table, Button, Form, Alert, InputGroup } from "react-boots
 import { useNavigate } from 'react-router-dom'
 import RecipeDataService from "../services/recipes.services";
 import './DisplayRecipes.css'
+import { useUserAuth } from "../context/AuthContext";
 
 const DisplayRecipes = () => {
     const [recipeId, setRecipeId] = useState("");
-    const [recipes, setRecipes] = useState([])
-    const [showModal, setShowModal] = useState(false)
+    const [recipes, setRecipes] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     const [recipeName, setRecipeName] = useState("");
     const [ingredients, setIngredients] = useState("");
     const [instructions, setInstructions] = useState("");
+   
+    const { user, } = useUserAuth();
+    const[userRecipes,setUserRecipes]=useState([]);
 
     //Handler for obtaining recipe data from database
     useEffect(() => {
         const fetchRecipes = async () => {
             const data = await RecipeDataService.getAllRecipes();
-            console.log(data.docs);
             setRecipes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
         fetchRecipes()
@@ -56,14 +59,9 @@ const DisplayRecipes = () => {
                     <Card.Body>
                         <Card.Img variant="top" src="holder.js/100px180" />
                         <Card.Title>{recipeData.recipeName}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Author</Card.Subtitle>
-                        <Card.Text>PUT NAME OF USER HERE!!</Card.Text>
+                        {/* <Card.Subtitle className="mb-2 text-muted">Author</Card.Subtitle>
+                        <Card.Text>PUT NAME OF USER HERE!!</Card.Text> */}
                         <Button variant="primary" onClick={(e) => getRecipeIdHandler(recipeData.id)}>View recipe</Button>
-                        {/* <Card.Text>{recipeData.name}</Card.Text>
-                    <Card.Header>ingredients</Card.Header>
-                    <Card.Text>{recipeData.ingredients}</Card.Text>
-                    <Card.Header>Instructions</Card.Header>
-                    <Card.Text>{recipeData.instructions}</Card.Text> */}
                     </Card.Body>
                 </Card>
 

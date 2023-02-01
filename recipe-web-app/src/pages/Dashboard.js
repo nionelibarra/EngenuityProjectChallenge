@@ -1,3 +1,5 @@
+//The Dashboard page only renders the Navigation bar and the RecipesList Component
+
 import React from 'react'
 import NavigationBar from '../components/Navbar'
 import RecipesList from '../components/RecipeList'

@@ -26,7 +26,6 @@ const RecipesList = ({ id }) => {
   const [showAddRecipe, setShowAddRecipe] = useState(false);
   const closeAddRecipe = () => setShowAddRecipe(false);
   const openAddRecipe = () => setShowAddRecipe(true);
-  
 
   //Declared variables for storing input data from forms
   const [recipeName, setRecipeName] = useState("");
@@ -92,6 +91,7 @@ const RecipesList = ({ id }) => {
   useEffect(() => {
     const fetchRecipes = async () => {
       const data = await RecipeDataService.getAllRecipes();
+      console.log(data.docs);
       setRecipes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
     fetchRecipes()
@@ -114,15 +114,7 @@ const RecipesList = ({ id }) => {
 
   };
 
- //HANDLER FOR CLEARING THE FIELD IN EDIT UPON CLOSING
- const closeEditHandler = () =>
- {
-  setRecipeName("");
-    setInstructions("");
-    setIngredients("");
-    forceUpdate();
-    closeEditRecipe();
- }
+
 
   //EDIT HANDLER WHEN WERE EDITING AND UPDATING A RECIPE
   const editHandler = async () => {
@@ -189,7 +181,7 @@ const RecipesList = ({ id }) => {
   useEffect((e) => {
     setUserId(user.uid)
     //DELETE LATER
-    console.log("uid saved in RecipeList: ", userId)
+    console.log("uid saved: ", userId)
   })
 
   //*****************************************HANDLER FUNCTIONS FOR RECIPE ADD END****************************************** */
@@ -252,9 +244,9 @@ const RecipesList = ({ id }) => {
         </tbody>
       </Table>
 
-      {/* ***********************************************************MODAL EDIT  COMPONENT START********************************************************* */}
+      {/* ***********************************************************MODAL EDIT  COMPONENT********************************************************* */}
 
-      <Modal show={showEditRecipe} onHide={closeEditHandler}>
+      <Modal show={showEditRecipe} onHide={closeEditRecipe}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Recipe</Modal.Title>
         </Modal.Header>
@@ -322,7 +314,7 @@ const RecipesList = ({ id }) => {
           </div>
         </></Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={closeEditHandler}>
+          <Button variant="secondary" onClick={closeEditRecipe}>
             Close
           </Button>
           <Button variant="success" type="Submit" form="recipe-form">
@@ -330,11 +322,9 @@ const RecipesList = ({ id }) => {
           </Button>
         </Modal.Footer>
       </Modal>
-{/* ***********************************************************MODAL EDIT  COMPONENT END********************************************************* */}
 
 
-
-      {/* ***********************************************************MODAL DELETE  COMPONENT START********************************************************* */}
+      {/* ***********************************************************MODAL DELETE  COMPONENT********************************************************* */}
       <Modal
         show={showDelete}
         onHide={handleCloseDelete}
@@ -354,7 +344,7 @@ const RecipesList = ({ id }) => {
           <Button variant="danger" onClick={(e) => deleteHandler(recipeId)}>DELETE</Button>
         </Modal.Footer>
       </Modal>
-{/* ***********************************************************MODAL DELETE  COMPONENT START********************************************************* */}
+
 
 
       {/* ***********************************************************MODAL ADD RECIPE  COMPONENT START********************************************************* */}

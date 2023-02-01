@@ -1,3 +1,6 @@
+//this files acts as a services "API" for the functions in the web app to 
+// reference in order to execute commands to the firebase database
+
 import { db } from "../firebase";
 import { collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { useUserAuth } from "../context/AuthContext";

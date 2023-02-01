@@ -1,0 +1,22 @@
+.add-recipe-button
+{
+    margin:10px 10px
+
+}
+
+.delete-button {
+  margin-left: 0.3rem;
+  margin-bottom: 0.3rem;
+  width: 5rem;
+}
+
+.edit-button {
+  margin-left: 0.3rem;
+  margin-bottom: 0.3rem;
+  width: 5rem;
+}
+
+.main-header
+{
+    margin: 10px
+}

@@ -1,38 +1,53 @@
-import React from "react";
-import { Button } from "react-bootstrap";
+import {React,useEffect,useReducer, useState} from "react";
+import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../context/AuthContext";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { MDBIcon } from 'mdbreact';
 import logo from "../images/logo_transparent.png"
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   const { logOut, user } = useUserAuth();
   const navigate = useNavigate();
+  const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
 
+
+
+ 
   const handleLogout = async () => {
     try {
       await logOut();
-      navigate("/");
+      navigate("/",{replace: true});
+      forceUpdate();
     } catch (error) {
       console.log(error.message);
     }
   };
+
+  // const authButton = () =>
+  // {
+
+  //   console.log("user details: ",user)
+  //   if( signInFlag=== null || signInFlag === "")
+  //   {
+  //     return (
+  //       <Button variant="outline-light" size="sm" as={Link} to="/signin">
+  //       Log in
+  //     </Button>
+  //     )
+  //   }
+  //   else{
+  //     <Button variant="outline-light" size="sm" onClick={handleLogout}>
+  //               Log out
+  //             </Button>
+  //   }
+  // }
   
   return (
     <>
-      {/* <div className="p-4 box mt-3 text-center">
-        Welcome <br />
-        {user && user.email}
-      </div>
-      <div className="d-grid gap-2">
-        <Button variant="primary" onClick={handleLogout}>
-          Log out
-        </Button>
-      </div> */}
 
       <Navbar bg="primary" variant="dark" fixed="top" expand="lg">
         <Container>
@@ -58,6 +73,9 @@ const NavigationBar = () => {
               <Button variant="outline-light" size="sm" onClick={handleLogout}>
                 Log out
               </Button>
+              {/* <Form>
+                {authButton()}
+              </Form> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
