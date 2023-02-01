@@ -17,9 +17,9 @@ This is a web application that allows for users to sign up, log in, view, edit, 
 
 ## Issues to be addressed
 
- - Dashboard is not persistent where user will be logged out whenever refreshing or clicking on dashboard link
- - Admin Dashboard can still be accessed by a regular user account
- - Formatting feature for displaying the recipes as well as adding images
+ - Dashboard is not persistent where user will be logged out whenever refreshing or clicking on dashboard link (2/1/2023)
+ - Admin Dashboard can still be accessed by a regular user account (2/1/2023)
+ - Formatting feature for displaying the recipes as well as adding images (2/1/2023)
 
  
 ## Getting Started
@@ -32,7 +32,6 @@ These are the following software needed to run this project on your PC.
 ### Installing
 
 * **git clone** the repository or download the source code folder through github.
-* Any modifications needed to be made to files/folders
 
 ### Running Source Code
 
