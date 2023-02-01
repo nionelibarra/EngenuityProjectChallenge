@@ -117,7 +117,7 @@ const AdminRecipesList = ({ id }) => {
    //HANDLER FOR CLEARING THE FIELD IN EDIT UPON CLOSING
  const closeEditHandler = () =>
  {
-  setRecipeName("");
+    setRecipeName("");
     setInstructions("");
     setIngredients("");
     forceUpdate();
@@ -254,10 +254,10 @@ const AdminRecipesList = ({ id }) => {
         </tbody>
       </Table>
 
-      {/* ***********************************************************MODAL EDIT  COMPONENT********************************************************* */}
+      {/* ***********************************************************MODAL EDIT  COMPONENT START********************************************************* */}
 
       <Modal show={showEditRecipe} onHide={closeEditHandler}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Edit Recipe</Modal.Title>
         </Modal.Header>
         <Modal.Body><>
@@ -332,9 +332,9 @@ const AdminRecipesList = ({ id }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+{/* ***********************************************************MODAL EDIT  COMPONENT END********************************************************* */}
 
-
-      {/* ***********************************************************MODAL DELETE  COMPONENT********************************************************* */}
+      {/* ***********************************************************MODAL DELETE  COMPONENT START********************************************************* */}
       <Modal
         show={showDelete}
         onHide={handleCloseDelete}
@@ -354,6 +354,7 @@ const AdminRecipesList = ({ id }) => {
           <Button variant="danger" onClick={(e) => deleteHandler(recipeId)}>DELETE</Button>
         </Modal.Footer>
       </Modal>
+         {/* ***********************************************************MODAL DELETE  COMPONENT END********************************************************* */}
 
 
 
@@ -434,6 +435,8 @@ const AdminRecipesList = ({ id }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+            {/* ***********************************************************MODAL ADD RECIPE  COMPONENT START********************************************************* */}
+
     </>
   );
 };
