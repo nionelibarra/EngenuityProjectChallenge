@@ -57,10 +57,7 @@ const DisplayRecipes = () => {
             <>
                 <Card style={{ width: "18rem" }} key={index} className="box-design">
                     <Card.Body>
-                        <Card.Img variant="top" src="holder.js/100px180" />
                         <Card.Title>{recipeData.recipeName}</Card.Title>
-                        {/* <Card.Subtitle className="mb-2 text-muted">Author</Card.Subtitle>
-                        <Card.Text>PUT NAME OF USER HERE!!</Card.Text> */}
                         <Button variant="primary" onClick={(e) => getRecipeIdHandler(recipeData.id)}>View recipe</Button>
                     </Card.Body>
                 </Card>
