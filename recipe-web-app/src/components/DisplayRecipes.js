@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useReducer } from 'react'
+import React, { useEffect, useState} from 'react'
 // import { Icon,Button, Card, Grid, Container, Image } from 'semantic-ui-react'
 import { Modal, Card, Table, Button, Form, Alert, InputGroup } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom'
 import RecipeDataService from "../services/recipes.services";
 import './DisplayRecipes.css'
 import { useUserAuth } from "../context/AuthContext";
@@ -14,9 +13,6 @@ const DisplayRecipes = () => {
     const [ingredients, setIngredients] = useState("");
     const [instructions, setInstructions] = useState("");
    
-    const { user, } = useUserAuth();
-    const[userRecipes,setUserRecipes]=useState([]);
-
     //Handler for obtaining recipe data from database
     useEffect(() => {
         const fetchRecipes = async () => {

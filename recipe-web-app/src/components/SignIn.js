@@ -9,7 +9,6 @@ import {
     MDBCard,
     MDBCardBody
 } from 'mdb-react-ui-kit';
-import {auth} from "../firebase";
 import {useUserAuth} from '../context/AuthContext';
 import {Link, useNavigate} from 'react-router-dom';
 import {Alert} from 'react-bootstrap';
@@ -22,19 +21,18 @@ export function SignIn() {
     const [password, setPassword] = useState('')
     const {signIn} = useUserAuth();
     const [error, setError] = useState()
-    const {user} = useUserAuth();
     const navigate = useNavigate();
 
 
-    // Function that handles the signin method upon clicking the "Log in" button
+    // FUNCTION THAT HANDLES THE SIGN IN PROCESS 
     const signInHandler = async (e) => {
         e.preventDefault();
         setError("")
         try {
             await signIn(email, password)
 
-            console.log("Succesfully logged in USER!")
-            navigate("/dashboard", {replace: true}) // must navigate to home page and prevent back button to go back to login page
+            // TRANSFER USER TO HOME PAGE AND PREVENT BACK BUTTON TO GO BACK TO LOGIN PAGE
+            navigate("/dashboard", {replace: true}) 
 
         } catch (error) {
             setError(error)
@@ -78,7 +76,7 @@ export function SignIn() {
                                     <MDBInput wrapperClass='mb-4 w-100' placeholder='Password' label='Password' id='formControlLg' type='password' size="lg"
                                         onChange={
                                             (e) => setPassword(e.target.value)
-                                        }/> {/* <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' /> */} </form>
+                                        }/></form>
                                 <MDBBtn size='lg' type="submit" form='signInForm'>
                                     Login
                                 </MDBBtn>

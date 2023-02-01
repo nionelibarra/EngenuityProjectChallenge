@@ -35,7 +35,6 @@ export function UserAuthContextProvider({ children }) {
                 setUser(currentUser);
                 setUserUid(currentUser.uid);
 
-                console.log("UID saved in Authcontext: ",userUid)
                 
             }
             else{

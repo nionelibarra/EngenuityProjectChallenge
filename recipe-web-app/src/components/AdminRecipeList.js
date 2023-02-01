@@ -102,8 +102,7 @@ const AdminRecipesList = ({ id }) => {
   //DELETE HANDLER WHEN WE ARE DELETING RECIPEs
   const deleteHandler = async (id) => {
     try {
-      //DELETE LATER
-      console.log("Captured Recipe id is: ", id)
+      
       await RecipeDataService.deleteRecipe(id);
       forceUpdate()
       handleCloseDelete();
@@ -167,8 +166,7 @@ const AdminRecipesList = ({ id }) => {
 
     };
 
-    //DELETE LATER
-    console.log("New recipe details: ", newRecipe);
+
 
     try {
       await RecipeDataService.addRecipes(newRecipe);
@@ -190,8 +188,7 @@ const AdminRecipesList = ({ id }) => {
   //Set USERID FROM AUTHCONTEXT
   useEffect((e) => {
     setUserId(user.uid)
-    //DELETE LATER
-    console.log("UID SAVED IN ADMIN RECIPE COMPONENT: ", userId)
+
   })
 
   //*****************************************HANDLER FUNCTIONS FOR RECIPE ADD END****************************************** */

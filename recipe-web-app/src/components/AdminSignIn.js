@@ -2,14 +2,12 @@ import React, {useState} from 'react';
 import {
     MDBContainer,
     MDBInput,
-    MDBCheckbox,
     MDBBtn,
     MDBRow,
     MDBCol,
     MDBCard,
     MDBCardBody
 } from 'mdb-react-ui-kit';
-import {auth} from "../firebase";
 import {useUserAuth} from '../context/AuthContext';
 import {Link, useNavigate} from 'react-router-dom';
 import {Alert} from 'react-bootstrap';
@@ -32,9 +30,6 @@ export function AdminSignIn() {
         setError("")
         try {
             await signIn(email, password)
-
-
-            console.log("Succesfully logged in ADMIN!")
             navigate("/admindashboard", {replace: true})
 
         } catch (error) {

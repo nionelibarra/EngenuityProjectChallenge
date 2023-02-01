@@ -9,15 +9,11 @@ import {
   MDBCheckbox
 }
   from 'mdb-react-ui-kit';
-import { auth } from "../firebase";
 import { Link, useNavigate } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import logo from "../images/logo_coloredbg.png"
 import "./SignUp.css";
-import RecipeDataService from "../services/recipes.services";
 import { useUserAuth } from '../context/AuthContext';
-import { db } from "../firebase";
-import { collection, doc } from "firebase/firestore";
 
 
 export function SignUp() {
@@ -41,7 +37,7 @@ export function SignUp() {
     displayName,
   }
 
-  //set User ID variable from Auth Context to Variable uid
+  //SET USER ID INTO A LOCAL FUNCTION VARIABLE  FROM AUTH CONTEXT
   useEffect((e) => {
     setUid(userUid)
     console.log("saved uid in local signup variable: ", uid)
@@ -49,7 +45,7 @@ export function SignUp() {
   })
 
 
-  //function that handles the signup process upon clicking the "Sign Up" button
+  //FUNCTION THAT HANDLES THE SIGNUP PROCESS 
   const signUpHandler = async (e) => {
     e.preventDefault();
     setError("")
@@ -66,23 +62,12 @@ export function SignUp() {
       return;
     }
 
-
-    //DELETE THESE CONSOLE LOGS ONLY FOR TESTING
-    console.log("email: " + email)
-    console.log("pass: " + password)
     signUp(email, password)
-
-    // const ref = doc(db, "userInfo", uid)
-    //  RecipeDataService.addUserInfo(ref, newUserInfo)
-
      navigate("/")
-
-
-
-
-
   }
 
+
+  //RENDER SING UP PAGE COMPONENTS
   return (
     <MDBContainer fluid className='d-flex align-items-center justify-content-center bg-image'>
       <div className='mask gradient-custom-3'></div>
