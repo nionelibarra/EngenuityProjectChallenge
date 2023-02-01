@@ -32,7 +32,6 @@ These are the following software needed to run this project on your PC.
 ### Installing
 
 * **git clone** the repository or download the source code folder through github.
-* Any modifications needed to be made to files/folders
 
 ### Running Source Code
 
